@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap");
+/* global box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body,
+html {
+  overflow-x: hidden;
+}
+/* tvoje postojeće stilove ostavi ovde... */
+.bricolage-font {
+  font-family: var(--font-bricolage);
+}
+/* Popravljena .nav-hover */
+.nav-hover {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-color: transparent;
+  transition: transform 180ms ease, box-shadow 180ms ease,
+    border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+  white-space: nowrap;
+}
+.notable-regular {
+  font-family: "Notable", sans-serif;
+  font-weight: 400;
+  
+  font-style: italic;
+}
+
+.nav-hover:hover {
+  border-color: #ffffff;
+  box-shadow: 1px 1px 300px rgba(255, 255, 255), 1px 1px 20px rgb(255, 255, 255);
+  transform: translateY(-2px) scale(1);
+  background-color: rgba(0, 0, 0, 0.507);
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .nav-hover {
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+.naslov {
+  text-shadow: 0px 0px 20px #aaaaaa, 0px 0px 10px #aaaaaa, 0px 0px 5px #aaaaaa,
+    0px 0px 20px black, 0px 0px 10px black, 0px 0px 5px black;
+}
+
+/* Responsive tweak za desktop navbar links */
+@media (max-width: 1180px) {
+  .nav-desktop-links {
+    font-size: 1.3rem; /* manji font od text-2xl */
+    gap: 1rem; /* smanji razmak između linkova */
+    margin-left: 70px;
+  }
+}
+@keyframes soft-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px); /* manji bounce */
+  }
+}
