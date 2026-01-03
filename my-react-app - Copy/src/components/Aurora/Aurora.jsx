@@ -263,7 +263,7 @@ export default function Aurora(props) {
       className="aurora-container"
       style={{
         width: "100%",
-        height: 300, // <-- OVDE JE KLJUČ
+        height: 250, // <-- OVDE JE KLJUČ
         zIndex: 1000,
       }}
     />
