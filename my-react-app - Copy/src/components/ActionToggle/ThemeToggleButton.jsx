@@ -19,10 +19,9 @@ export default function ThemeToggleButton({ top = 8, right = 17 }) {
       opacity={"0.7"}
       color={buttonColor}
       backgroundColor={buttonBg}
-      height="60px"
-      width="60px"
-      top={1.5}
-      right={23}
+      height="58px"
+      width="58px"
+      className=" top-[0.8vh] right-[2vw]"
       _hover={{ opacity: 1, transform: "scale(1.05)" }}
       aria-label="Toggle color mode"
       icon={colorMode === "light" ? <LuMoon size={24} /> : <LuSun size={24} />}
