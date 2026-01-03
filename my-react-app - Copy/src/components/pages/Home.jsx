@@ -70,7 +70,7 @@ function Home() {
       }`}
     >
       {/* SADA JE OVO OBICAN NASLOV, SPLITTEXT CE GA RASPARČATI */}
-      <h1 className=" hero-title !text-5xl md:!text-7xl lg:!text-8xl font-black mb-8 md:mb-12 tracking-tighter uppercase">
+      <h1 className=" !text-shadow-lg !text-shadow-sky-500 hero-title !text-5xl md:!text-7xl lg:!text-8xl font-black mb-8 md:mb-12 tracking-tighter uppercase">
         Hi, I'm Nikola Sovljanski
       </h1>
 
