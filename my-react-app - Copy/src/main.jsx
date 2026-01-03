@@ -1,21 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-// *** UVEZITE ColorModeScript ***
 import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.jsx";
 import "./index.css";
 
-// Uverite se da je initialColorMode postavljen na "light" (ili "dark")
-const initialColorMode = "black";
+// 1. OVO JE OBAVEZNO - uvoz tvog theme fajla
+import theme from "./theme";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* 1. DODAJTE COLORMODESCRIPT PRE PROVIDERA */}
-      <ColorModeScript initialColorMode={initialColorMode} />
+      {/* 2. Ovde uvek stavi "dark" direktno ili theme.config.initialColorMode */}
+      <ColorModeScript initialColorMode="dark" />
 
-      <ChakraProvider>
+      {/* 3. Prosledi uvezeni theme */}
+      <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>
     </BrowserRouter>
