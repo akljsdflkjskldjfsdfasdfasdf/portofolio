@@ -46,7 +46,7 @@ export default function Navbar() {
 
       {/* Mobile hamburger button */}
       <button
-        className="md:hidden relative -translate-x-20 z-50 p-2 rounded focus:outline-none focus:ring-0 active:outline-none"
+        className="md:hidden relative -translate-x-15 z-50 p-2 rounded focus:outline-none focus:ring-0 active:outline-none"
         onClick={() => setIsOpen((s) => !s)}
         aria-expanded={isOpen}
         aria-label={isOpen ? "Zatvori meni" : "Otvori meni"}
