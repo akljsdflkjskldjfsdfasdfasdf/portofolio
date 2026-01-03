@@ -827,7 +827,7 @@ const RestoranPizza = () => {
         {/* SECTION 4: ABOUT (O NAMA) */}
         <section
           id="section2"
-          className=" opacity-0 w-[80vw] h-[100vh] mx-auto border-4 border-amber-50 overflow-hidden"
+          className=" opacity-0 w-[80vw] h-[100vh] mx-auto border-4 border-amber-50 overflow-hidden mt-20"
         >
           <div className="flex flex-col md:flex-row justify-between items-center h-full">
             {/* Leva strana: priča o pizzeriji */}
@@ -890,5 +890,6 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
+
 
 
