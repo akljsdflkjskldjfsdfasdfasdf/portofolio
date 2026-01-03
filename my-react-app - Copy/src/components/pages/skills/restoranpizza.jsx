@@ -787,7 +787,7 @@ const RestoranPizza = () => {
         {/* SECTION 3: MAPA I KONTAKT */}
         <section
           id="section3"
-          className="py-20 px-4 opacity-0 h-[100vh] relative"
+          className="py-20 px-4 opacity-0 h-[100vh] relative mb-20"
         >
           <div className="mt-40 max-w-7xl mx-auto bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10">
             <div className="flex flex-col md:flex-row">
@@ -827,7 +827,7 @@ const RestoranPizza = () => {
         {/* SECTION 4: ABOUT (O NAMA) */}
         <section
           id="section2"
-          className=" opacity-0 w-[80vw] h-[100vh] mx-auto border-4 border-amber-50 overflow-hidden mt-20"
+          className=" opacity-0 w-[80vw] h-[100vh] mx-auto border-4 border-amber-50 overflow-hidden"
         >
           <div className="flex flex-col md:flex-row justify-between items-center h-full">
             {/* Leva strana: priča o pizzeriji */}
@@ -890,6 +890,7 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
+
 
 
 
