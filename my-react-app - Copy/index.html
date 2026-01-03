@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Italiana&family=Paytone+One&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Notable&display=swap"
-      rel="stylesheet"
-    />
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <title>Sovljanski Portfolio</title>
+    
+    <link rel="icon" type="image/x-icon" href="/ikonica.ico" />
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-react-app</title>
-  <link rel="icon" type="image/x-icon" href="/ikonica.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Italiana&family=Paytone+One&family=Notable&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html, body {
+        background-color: black !important;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
   </head>
   <body>
+    <script>
+      try {
+        localStorage.setItem("chakra-ui-color-mode", "dark");
+      } catch (e) {}
+    </script>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
