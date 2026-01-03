@@ -1,8 +1,8 @@
 // ===== IMPORT SEKCIJA =====
 // Uvozimo React biblioteku i njene hook-ove za state management i lifecycle
 import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
-import celaPizzaImg from "./components/images/celaPizza.png";
-import pizzaImg from "./components/images/pizza.png";
+import pizzaImg from "../../images/pizza.png";
+import celaPizzaImg from "../../images/celaPizza.png";
 // Uvozimo slike koje će se koristiti u aplikaciji (logo i pozadina)
 import ikonaGojko from "../../images/gojkoIkona.png";
 import backgroundSlika from "../../images/background.jpeg";
@@ -890,4 +890,5 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
+
 
