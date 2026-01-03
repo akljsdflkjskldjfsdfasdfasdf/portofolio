@@ -19,19 +19,19 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-[rgba(0,0,0,0.52)] backdrop-blur-sm text-white px-6 py-4 flex items-center justify-between relative border-4 shadow-md shadow-amber-50 border-black rounded-full ">
+    <nav className="bg-[rgba(0,0,0,0.52)] backdrop-blur-sm text-white px-6 py-4  flex items-center justify-between relative border-4 shadow-md shadow-amber-50 border-black rounded-full ">
       {/* Logo / brand */}
       <div
-        className="text-[175%] font-black uppercase 
-              bg-linear-to-r from-[#ffa600ff] via-[#ff2727ff] to-[#00e1ffff]
-              bg-clip-text text-transparent 
-              drop-shadow-[0_0_4px_black]  "
+        className="text-[130%] md:text-[175%] font-black uppercase 
+             bg-linear-to-r from-[#ffa600ff] via-[#ff2727ff] to-[#00e1ffff]
+             bg-clip-text text-transparent 
+             drop-shadow-[0_0_4px_black]"
       >
         sovljanski.dev
       </div>
 
       {/* Desktop links */}
-      <ul className="hidden md:flex gap-x-32 font-black text-2xl absolute left-1/2 -translate-x-1/2 nav-desktop-links  ">
+      <ul className="hidden md:flex gap-x-32 font-black text-2xl absolute left-1/2 -translate-x-1/2 nav-desktop-links my-auto ">
         {LINKS.map((l) => (
           <li key={l.href}>
             <Link
