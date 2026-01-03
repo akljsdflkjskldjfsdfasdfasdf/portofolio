@@ -1,7 +1,8 @@
 // ===== IMPORT SEKCIJA =====
 // Uvozimo React biblioteku i njene hook-ove za state management i lifecycle
 import React, { useEffect, useRef, useState, useLayoutEffect } from "react";
-
+import celaPizzaImg from "./components/images/celaPizza.png";
+import pizzaImg from "./components/images/pizza.png";
 // Uvozimo slike koje će se koristiti u aplikaciji (logo i pozadina)
 import ikonaGojko from "../../images/gojkoIkona.png";
 import backgroundSlika from "../../images/background.jpeg";
@@ -574,10 +575,10 @@ const RestoranPizza = () => {
           <div className=" h-[90vh]">
             {/* Lebdeća pizza slika */}
             <img
-              className="pizza-img mx-auto w-1/4 w-2xs inset-0 object-cover object-center"
-              src="src/components/images/pizza.png"
-              alt="Pizza na drva"
-            />
+  className="pizza-img mx-auto w-1/4 w-2xs inset-0 object-cover object-center"
+  src={pizzaImg}
+  alt="Pizza na drva"
+/>
             {/* Hero naslov sa animacijom karaktera */}
             <h1 className="naslov p-7 tracking-wider block text-center w-[90vw] notable-regular  rounded-b-4xl !mx-auto bg-red-800/90 hero-title  text-yellow-300 uppercase text-center !text-shadow-black !text-shadow-md  !text-4xl md:!text-7xl ">
               Welcome to Pizzeria Gojko
@@ -875,10 +876,10 @@ const RestoranPizza = () => {
             {/* Desna strana: velika pizza slika koja rotira */}
             <div className="flex-1 flex justify-center items-center h-full">
               <img
-                src="src/components/images/celaPizza.png"
-                alt="big pizza"
-                className=" mx-auto celapizza max-h-4/5 object-contain"
-              />
+  src={celaPizzaImg}
+  alt="big pizza"
+  className="mx-auto celapizza max-h-4/5 object-contain"
+/>
             </div>
           </div>
         </section>
@@ -889,3 +890,4 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
+
