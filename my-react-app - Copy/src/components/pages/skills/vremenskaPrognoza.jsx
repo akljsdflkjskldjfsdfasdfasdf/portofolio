@@ -49,7 +49,7 @@ const VremenskaPrognoza = () => {
     <div
       className={`min-h-screen pt-32 pb-10 px-0 font-sans transition-colors duration-300`}
     >
-      <div className="w-3/4 max-w-2xl mx-auto">
+      <div className="w-4/5 !md:3/4 max-w-2xl mx-auto">
         <form onSubmit={handleSearch} className="mb-10 flex gap-4 h-10">
           <input
             type="text"
@@ -148,7 +148,7 @@ const VremenskaPrognoza = () => {
               </div>
             </div>
 
-            <div className="grid grid-cols-3 w-4/5 gap-4 m-auto">
+            <div className="grid grid-cols-3 w-5/5 !md:w-4/5 gap-4 m-auto">
               {data.forecast.forecastday.map((day, index) => (
                 <button
                   key={index}
