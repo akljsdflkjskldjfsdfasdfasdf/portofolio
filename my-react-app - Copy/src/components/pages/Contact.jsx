@@ -60,7 +60,7 @@ function Contact() {
               isDark ? "text-white" : "text-black"
             }`}
           >
-            nikolasovljanski.nevergiveup@gmail.com
+            nsovljanski@gmail.com
           </a>
         </div>
 
@@ -166,3 +166,4 @@ function Contact() {
 }
 
 export default Contact;
+
