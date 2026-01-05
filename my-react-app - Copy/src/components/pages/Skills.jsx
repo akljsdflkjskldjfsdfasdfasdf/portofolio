@@ -1,6 +1,19 @@
 import React, { useRef } from "react";
-import { Link } from "react-router-dom";
-import { useColorMode } from "@chakra-ui/react";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  useColorMode,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
+  Text,
+  Kbd
+} from "@chakra-ui/react";
 import prviVideo from "../videos/prviVideo.mp4";
 import prvaSlika from "../images/vreme.png";
 import drugaSlika from "../images/drugaSlika.png";
@@ -10,13 +23,13 @@ import treciVideo from "../videos/treciVideo.mp4";
 
 // ================= SkillCard Component =================
 
-const SkillCard = ({ title, videoUrl, imageUrl, path }) => {
+const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
   const videoRef = useRef(null);
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
 
   // Proveravamo da li je link eksterni (počinje sa http)
-  const isExternal = path.startsWith("http");
+  const isExternal = path && path.startsWith("http");
 
   const Content = () => (
     <div
@@ -54,6 +67,15 @@ const SkillCard = ({ title, videoUrl, imageUrl, path }) => {
     </div>
   );
 
+  // LOGIKA: Ako postoji onClick (za Modal), koristi div umesto linka
+  if (onClick) {
+    return (
+      <div onClick={onClick} className="block">
+        <Content />
+      </div>
+    );
+  }
+
   // Ako je eksterni, koristi <a>, ako je interni koristi <Link>
   return isExternal ? (
     <a href={path} target="_blank" rel="noopener noreferrer" className="block">
@@ -70,6 +92,16 @@ const SkillCard = ({ title, videoUrl, imageUrl, path }) => {
 
 const Skills = () => {
   const { colorMode } = useColorMode();
+  
+  // Hooks za Modal i Navigaciju
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
+  // Funkcija koja vodi na Pizza stranicu nakon što korisnik pročita modal
+  const handleProceedToPizza = () => {
+    onClose();
+    navigate("/pizzarestaurant");
+  };
 
   return (
     <div className="min-h-screen px-10 pt-10">
@@ -88,12 +120,15 @@ const Skills = () => {
           imageUrl={prvaSlika}
           videoUrl={prviVideo}
         />
+        
+        {/* Pizza Kartica - ovde prosleđujemo onOpen umesto path-a da bi se prvo otvorio modal */}
         <SkillCard
           title={"Pizza Restaurant"}
-          path={"/pizzarestaurant"}
+          onClick={onOpen} 
           imageUrl={drugaSlika}
           videoUrl={drugiVideo}
         />
+
         <SkillCard
           title={"Barber site (supabase)"}
           path={"https://barber-ace-studio.netlify.app/"}
@@ -101,6 +136,47 @@ const Skills = () => {
           videoUrl={treciVideo}
         />
       </div>
+
+      {/* ================= MODAL ZA PIZZA RESTORAN ================= */}
+      <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
+        <ModalOverlay backdropFilter='blur(5px)' />
+        <ModalContent bg={colorMode === "dark" ? "gray.800" : "white"}>
+          <ModalHeader fontSize="2xl" fontWeight="bold">
+            Važna napomena za Pizza Restaurant
+          </ModalHeader>
+          <ModalCloseButton />
+          
+          <ModalBody fontSize="lg">
+            <Text mb={4}>
+              Ovo je <strong>CRUD</strong> (Create, Read, Update, Delete) sajt.
+            </Text>
+            <Text mb={4}>
+              To znači da možete <strong>dodavati ili brisati</strong> pice koje se nalaze u ponudi picerije.
+            </Text>
+            <Text 
+              p={4} 
+              bg={colorMode === "dark" ? "whiteAlpha.200" : "orange.100"} 
+              borderRadius="md" 
+              fontWeight="medium"
+            >
+              Za pristup Admin panelu pritisnite prečicu: <br />
+              <span>
+                <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>Z</Kbd>
+              </span>
+            </Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button variant="ghost" mr={3} onClick={onClose}>
+              Zatvori
+            </Button>
+            <Button colorScheme="orange" onClick={handleProceedToPizza}>
+              Razumem, otvori sajt
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
     </div>
   );
 };
