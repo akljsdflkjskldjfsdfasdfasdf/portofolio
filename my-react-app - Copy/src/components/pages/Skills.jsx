@@ -1,19 +1,6 @@
-import React, { useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import {
-  useColorMode,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  ModalCloseButton,
-  Button,
-  useDisclosure,
-  Text,
-  Kbd
-} from "@chakra-ui/react";
+import React, { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useColorMode } from "@chakra-ui/react";
 import prviVideo from "../videos/prviVideo.mp4";
 import prvaSlika from "../images/vreme.png";
 import drugaSlika from "../images/drugaSlika.png";
@@ -22,14 +9,12 @@ import trecaSlika from "../images/trecaSlika.png";
 import treciVideo from "../videos/treciVideo.mp4";
 
 // ================= SkillCard Component =================
-
 const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
   const videoRef = useRef(null);
   const { colorMode } = useColorMode();
   const isDark = colorMode === "dark";
-
   // Proveravamo da li je link eksterni (počinje sa http)
-  const isExternal = path && path.startsWith("http");
+  const isExternal = path.startsWith("http");
 
   const Content = () => (
     <div
@@ -46,7 +31,6 @@ const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
         alt={title}
         className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0"
       />
-
       {/* Video */}
       <video
         ref={videoRef}
@@ -57,7 +41,6 @@ const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
       />
-
       {/* Naslov */}
       <div className="absolute bottom-0 w-full bg-black/40 p-8 backdrop-blur-sm">
         <h3 className="text-white text-2xl font-black uppercase tracking-widest">
@@ -67,7 +50,7 @@ const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
     </div>
   );
 
-  // LOGIKA: Ako postoji onClick (za Modal), koristi div umesto linka
+  // Ako ima onClick prop, koristi div sa onClick
   if (onClick) {
     return (
       <div onClick={onClick} className="block">
@@ -89,18 +72,16 @@ const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
 };
 
 // ================= Skills Page =================
-
 const Skills = () => {
   const { colorMode } = useColorMode();
-  
-  // Hooks za Modal i Navigaciju
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
-  // Funkcija koja vodi na Pizza stranicu nakon što korisnik pročita modal
-  const handleProceedToPizza = () => {
-    onClose();
-    navigate("/pizzarestaurant");
+  const handlePizzaClick = () => {
+    setShowPopup(true);
+  };
+
+  const closePopup = () => {
+    setShowPopup(false);
   };
 
   return (
@@ -112,7 +93,6 @@ const Skills = () => {
       >
         MY PROJECTS
       </h1>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
         <SkillCard
           title="Weather App"
@@ -120,15 +100,13 @@ const Skills = () => {
           imageUrl={prvaSlika}
           videoUrl={prviVideo}
         />
-        
-        {/* Pizza Kartica - ovde prosleđujemo onOpen umesto path-a da bi se prvo otvorio modal */}
         <SkillCard
           title={"Pizza Restaurant"}
-          onClick={onOpen} 
+          path={"/pizzarestaurant"}
           imageUrl={drugaSlika}
           videoUrl={drugiVideo}
+          onClick={handlePizzaClick}
         />
-
         <SkillCard
           title={"Barber site (supabase)"}
           path={"https://barber-ace-studio.netlify.app/"}
@@ -137,46 +115,65 @@ const Skills = () => {
         />
       </div>
 
-      {/* ================= MODAL ZA PIZZA RESTORAN ================= */}
-      <Modal isOpen={isOpen} onClose={onClose} isCentered size="xl">
-        <ModalOverlay backdropFilter='blur(5px)' />
-        <ModalContent bg={colorMode === "dark" ? "gray.800" : "white"}>
-          <ModalHeader fontSize="2xl" fontWeight="bold">
-            Važna napomena za Pizza Restaurant
-          </ModalHeader>
-          <ModalCloseButton />
-          
-          <ModalBody fontSize="lg">
-            <Text mb={4}>
-              Ovo je <strong>CRUD</strong> (Create, Read, Update, Delete) sajt.
-            </Text>
-            <Text mb={4}>
-              To znači da možete <strong>dodavati ili brisati</strong> pice koje se nalaze u ponudi picerije.
-            </Text>
-            <Text 
-              p={4} 
-              bg={colorMode === "dark" ? "whiteAlpha.200" : "orange.100"} 
-              borderRadius="md" 
-              fontWeight="medium"
+      {/* Popup Modal */}
+      {showPopup && (
+        <div
+          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
+          onClick={closePopup}
+        >
+          <div
+            className={`${
+              colorMode === "dark" ? "bg-gray-800" : "bg-white"
+            } rounded-2xl p-8 max-w-md mx-4 shadow-2xl`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2
+              className={`text-2xl font-bold mb-4 ${
+                colorMode === "dark" ? "text-white" : "text-black"
+              }`}
             >
-              Za pristup Admin panelu pritisnite prečicu: <br />
-              <span>
-                <Kbd>Ctrl</Kbd> + <Kbd>Shift</Kbd> + <Kbd>Z</Kbd>
-              </span>
-            </Text>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button variant="ghost" mr={3} onClick={onClose}>
-              Zatvori
-            </Button>
-            <Button colorScheme="orange" onClick={handleProceedToPizza}>
-              Razumem, otvori sajt
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
+              Pizza Restaurant - CRUD Site
+            </h2>
+            <p
+              className={`mb-6 ${
+                colorMode === "dark" ? "text-gray-300" : "text-gray-700"
+              }`}
+            >
+              This is a CRUD site where you can add or delete drinks and pizzas
+              in the pizzeria.
+            </p>
+            <p
+              className={`mb-6 font-semibold ${
+                colorMode === "dark" ? "text-yellow-400" : "text-yellow-600"
+              }`}
+            >
+              Press <span className="font-black">Ctrl + Shift + Z</span> to
+              access the admin panel!
+            </p>
+            <div className="flex gap-4">
+              <Link
+                to="/pizzarestaurant"
+                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors text-center"
+                onClick={closePopup}
+              >
+                Open Project
+              </Link>
+              <button
+                onClick={closePopup}
+                className={`flex-1 ${
+                  colorMode === "dark"
+                    ? "bg-gray-700 hover:bg-gray-600"
+                    : "bg-gray-300 hover:bg-gray-400"
+                } font-bold py-3 px-6 rounded-lg transition-colors ${
+                  colorMode === "dark" ? "text-white" : "text-black"
+                }`}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
