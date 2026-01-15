@@ -150,22 +150,24 @@ const Skills = () => {
               Press <span className="font-black">Ctrl + Shift + Z</span> to
               access the admin panel!
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 mt-3.5">
               <Link
                 to="/pizzarestaurant"
-                className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors text-center"
+                className={`flex-1 font-bold py-3 px-6 rounded-lg transition-colors text-center ${
+                  colorMode === "dark"
+                    ? "bg-gray-700 hover:!bg-gray-400 text-white"
+                    : "bg-gray-300 hover:!bg-gray-200 text-black"
+                }`}
                 onClick={closePopup}
               >
                 Open Project
               </Link>
               <button
                 onClick={closePopup}
-                className={`flex-1 ${
+                className={`flex-1 font-bold py-3 px-6 rounded-lg transition-colors ${
                   colorMode === "dark"
-                    ? "bg-gray-700 hover:bg-gray-600"
-                    : "bg-gray-300 hover:bg-gray-400"
-                } font-bold py-3 px-6 rounded-lg transition-colors ${
-                  colorMode === "dark" ? "text-white" : "text-black"
+                    ? "bg-gray-700 hover:!bg-gray-400 text-white"
+                    : "bg-gray-300 hover:!bg-gray-200 text-black"
                 }`}
               >
                 Close
