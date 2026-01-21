@@ -111,7 +111,9 @@ function Home() {
           "HTML5",
           "CSS3",
           "JavaScript",
-          "Node.js",
+          "Express.js",
+          "SQL",
+          "TypeScript",
           "React",
           "GSAP",
           "Tailwind CSS",
@@ -170,6 +172,7 @@ function Home() {
 }
 
 export default Home;
+
 
 
 
