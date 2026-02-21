@@ -7,6 +7,8 @@ import drugaSlika from "../images/drugaSlika.png";
 import drugiVideo from "../videos/drugiVideo.mp4";
 import trecaSlika from "../images/trecaSlika.png";
 import treciVideo from "../videos/treciVideo.mp4";
+import cetvrtaSlika from "../images/cetvrtaSlika.png";
+import cetvrtaVideo from "../videos/cetvrtaVideo.mp4";
 
 // ================= SkillCard Component =================
 const SkillCard = ({ title, videoUrl, imageUrl, path, onClick }) => {
@@ -107,6 +109,12 @@ const Skills = () => {
           imageUrl={trecaSlika}
           videoUrl={treciVideo}
         />
+        <SkillCard
+          title={"Product shopping (with backend)"}
+          path={"https://barber-ace-studio.netlify.app/"}
+          imageUrl={cetvrtaSlika}
+          videoUrl={cetvrtaVideo}
+        />
       </div>
 
       {/* Popup Modal */}
@@ -116,4 +124,5 @@ const Skills = () => {
 };
 
 export default Skills;
+
 
