@@ -7,7 +7,7 @@ import drugaSlika from "../images/drugaSlika.png";
 import drugiVideo from "../videos/drugiVideo.mp4";
 import trecaSlika from "../images/trecaSlika.png";
 import treciVideo from "../videos/treciVideo.mp4";
-import cetvrtaSlika from "../images/cetvrtaSlika.png";
+import cetvrtaSlika from "../images/cetvrtaSlika.jpg";
 import cetvrtaVideo from "../videos/cetvrtaVideo.mp4";
 
 // ================= SkillCard Component =================
@@ -124,6 +124,7 @@ const Skills = () => {
 };
 
 export default Skills;
+
 
 
 
