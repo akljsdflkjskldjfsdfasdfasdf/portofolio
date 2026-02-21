@@ -656,11 +656,11 @@ const RestoranPizza = () => {
               <div
                 onClick={() => handleCategoryClick("drinks")}
                 id="drinks"
-                className="category-card z-50! overflow-hidden group relative mx-auto w-[90%] md:w-[70%] min-h-[250px] bg-black/100 rounded-3xl border border-white/10 flex flex-col md:flex-row items-center justify-center md:justify-between p-8 md:px-20 cursor-pointer  transition-all hover:scale-[1.02]"
+                className="category-card z-50! overflow-hidden group relative mx-auto w-[90%] md:w-[70%] min-h-[250px] bg-black/30 backdrop-blur-sm rounded-3xl border border-white/10 flex flex-col md:flex-row items-center justify-center md:justify-between p-8 md:px-20 cursor-pointer  transition-all hover:scale-[1.02]"
               >
                 {/* Leva strana: tekst */}
-                <div className="z-10 md:text-left  ">
-                  <h3 className="text-4xl md:text-6xl font-black text-white uppercase italic tracking-tighter">
+                <div className="z-10 md:text-left   ">
+                  <h3 className="text-4xl md:text-6xl font-black  text-white uppercase italic tracking-tighter">
                     Thirsty?
                   </h3>
                   <p className="text-gray-400 text-2xl uppercase tracking-widest ">
@@ -768,7 +768,7 @@ const RestoranPizza = () => {
 
         {/* SECTION 3: MAPA I KONTAKT */}
         <section id="section3" className="py-20 px-4  h-[100vh] relative mb-20">
-          <div className="mt-40 max-w-7xl mx-auto bg-black/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10">
+          <div className="mt-40 max-w-7xl mx-auto bg-black/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10">
             <div className="flex flex-col md:flex-row">
               {/* Leva strana: kontakt informacije */}
               <div className="p-10 md:w-1/3 flex flex-col justify-center">
@@ -810,7 +810,7 @@ const RestoranPizza = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center h-full">
             {/* Leva strana: priča o pizzeriji */}
-            <div className="bg-black/80 flex-1 h-[60%] w-full flex flex-col justify-center p-10 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-amber-50/20">
+            <div className="bg-black/30 backdrop-blur-sm flex-1 h-[60%] w-full flex flex-col justify-center p-10 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-amber-50/20">
               {/* Naslov */}
               <h2 className="bricolage-font text-yellow-300 text-4xl md:text-6xl uppercase italic font-black mb-6 leading-tight">
                 Naša Priča <br />
@@ -869,4 +869,3 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
-
