@@ -347,7 +347,7 @@ const RestoranPizza = () => {
               scrollTrigger: {
                 trigger: sectionId,
                 start: "top 80%", // Animacija kreće kad vrh sekcije uđe na 90% visine ekrana
-                toggleActions: "play reverse play reverse", // Play kad ulazi, reverse kad se vraćaš gore
+                toggleActions: "play none play reverse", // Play kad ulazi, reverse kad se vraćaš gore
                 // willChange: "transform, opacity" // Opciono za bolje performanse
               },
             },
@@ -869,3 +869,4 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
+
