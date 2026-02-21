@@ -111,7 +111,7 @@ const Skills = () => {
         />
         <SkillCard
           title={"Product shopping (with backend)"}
-          path={"https://barber-ace-studio.netlify.app/"}
+          path={"https://duru-shop.netlify.app/"}
           imageUrl={cetvrtaSlika}
           videoUrl={cetvrtaVideo}
         />
@@ -124,5 +124,6 @@ const Skills = () => {
 };
 
 export default Skills;
+
 
 
