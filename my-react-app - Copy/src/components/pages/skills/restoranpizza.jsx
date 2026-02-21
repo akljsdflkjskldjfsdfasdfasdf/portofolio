@@ -285,13 +285,13 @@ const RestoranPizza = () => {
             stagger: 0, // Svaka kartica kreće 0.1s kasnije
             ease: "back.out(1.2)", // Bounce efekat
             willChange: "transform",
-          }
+          },
         );
         // Animiraj "Back" dugme
         gsap.fromTo(
           ".back-btn",
           { x: -20, opacity: 0 }, // Levo i nevidljivo
-          { x: 0, opacity: 1, duration: 0.5, delay: 0.2 } // Klizi s leva
+          { x: 0, opacity: 1, duration: 0.5, delay: 0.2 }, // Klizi s leva
         );
       }
       // Ako nisu prikazani proizvodi (vrati se na kategorije)
@@ -300,7 +300,13 @@ const RestoranPizza = () => {
         gsap.fromTo(
           ".category-card",
           { y: 20, opacity: 0 }, // Ispod i nevidljivo
-          { y: 0, opacity: 1, duration: 0.6, stagger: 0.15, ease: "power2.out" }
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.15,
+            ease: "power2.out",
+          },
         );
         gsap.to(".pizza-outer", {
           rotation: 360,
@@ -327,50 +333,26 @@ const RestoranPizza = () => {
       // Animiraj Section 1 i Section 2 kad scroll-uješ do njih
       ["#section", "#section1", "#section2", "#section3"].forEach(
         (sectionId) => {
-          gsap.from(sectionId, {
-            scrollTrigger: {
-              trigger: sectionId, // Element koji triggeruje animaciju
-              start: "top 99%", // Kad vrh sekcije dođe do 80% ekrana
-              toggleActions: "play none none reverse", // Animacija se pokreće i obrće
-              // Kad sekcija uđe u viewport
-              onEnter: () =>
-                gsap.fromTo(
-                  sectionId,
-                  {
-                    x: 150, // Kreni 50px ispod
-                    opacity: 0.2, // Nevidljivo
-                    delay: 20,
-                  },
-                  {
-                    delay: 0.1,
-                    x: 0,
-                    duration: 2.2,
-                    ease: "power4",
-                    overwrite: "auto", // Automatski prekini prethodne animacije
-                    opacity: 1,
-                    willChange: "transform",
-                  }
-                ),
-              // Kad scroll-uješ nazad
-              onEnterBack: () =>
-                gsap.fromTo(
-                  sectionId,
-                  {
-                    x: 50, // Kreni 50px ispod
-                    opacity: 0.2, // Nevidljivo
-                  },
-                  {
-                    x: 0,
-                    duration: 3.2,
-                    ease: "back.out",
-                    overwrite: "auto", // Automatski prekini prethodne animacije
-                    opacity: 1,
-                    willChange: "transform",
-                  }
-                ),
+          gsap.fromTo(
+            sectionId,
+            {
+              x: 1500, // Kreće sa 100px desno
+              opacity: 1, // Kreće od nule
             },
-          });
-        }
+            {
+              x: 0,
+              opacity: 1,
+              duration: 1.5,
+              ease: "power2",
+              scrollTrigger: {
+                trigger: sectionId,
+                start: "top 80%", // Animacija kreće kad vrh sekcije uđe na 90% visine ekrana
+                toggleActions: "play reverse play reverse", // Play kad ulazi, reverse kad se vraćaš gore
+                // willChange: "transform, opacity" // Opciono za bolje performanse
+              },
+            },
+          );
+        },
       );
 
       // Animacija za pizza sliku
@@ -387,7 +369,7 @@ const RestoranPizza = () => {
             duration: 2.8,
             ease: "elastic.out(1, 0.75)", // Elastic bounce efekat
             delay: 0.4,
-          }
+          },
         )
         // Zatim: lebdenje gore-dole (beskonačno)
         .to(".pizza-img", {
@@ -575,10 +557,10 @@ const RestoranPizza = () => {
           <div className=" h-[90vh]">
             {/* Lebdeća pizza slika */}
             <img
-  className="pizza-img mx-auto w-1/4 w-2xs inset-0 object-cover object-center"
-  src={pizzaImg}
-  alt="Pizza na drva"
-/>
+              className="pizza-img mx-auto w-1/4 w-2xs inset-0 object-cover object-center"
+              src={pizzaImg}
+              alt="Pizza na drva"
+            />
             {/* Hero naslov sa animacijom karaktera */}
             <h1 className="naslov p-7 tracking-wider block text-center w-[90vw] notable-regular  rounded-b-4xl !mx-auto bg-red-800/90 hero-title  text-yellow-300 uppercase text-center !text-shadow-black !text-shadow-md  !text-4xl md:!text-7xl ">
               Welcome to Pizzeria Gojko
@@ -785,11 +767,8 @@ const RestoranPizza = () => {
         </section>
 
         {/* SECTION 3: MAPA I KONTAKT */}
-        <section
-          id="section3"
-          className="py-20 px-4 opacity-0 h-[100vh] relative mb-20"
-        >
-          <div className="mt-40 max-w-7xl mx-auto bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10">
+        <section id="section3" className="py-20 px-4  h-[100vh] relative mb-20">
+          <div className="mt-40 max-w-7xl mx-auto bg-black/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/10">
             <div className="flex flex-col md:flex-row">
               {/* Leva strana: kontakt informacije */}
               <div className="p-10 md:w-1/3 flex flex-col justify-center">
@@ -827,7 +806,7 @@ const RestoranPizza = () => {
         {/* SECTION 4: ABOUT (O NAMA) */}
         <section
           id="section2"
-          className=" opacity-0 w-[80vw] h-[100vh] mx-auto border-4 border-amber-50 overflow-hidden"
+          className=" opacity-0 mt-25 w-[80vw] h-[100vh] mx-auto border-4 border-amber-50 overflow-hidden"
         >
           <div className="flex flex-col md:flex-row justify-between items-center h-full">
             {/* Leva strana: priča o pizzeriji */}
@@ -876,10 +855,10 @@ const RestoranPizza = () => {
             {/* Desna strana: velika pizza slika koja rotira */}
             <div className="flex-1 flex justify-center items-center h-full">
               <img
-  src={celaPizzaImg}
-  alt="big pizza"
-  className="mx-auto celapizza max-h-4/5 object-contain"
-/>
+                src={celaPizzaImg}
+                alt="big pizza"
+                className="mx-auto celapizza max-h-4/5 object-contain"
+              />
             </div>
           </div>
         </section>
@@ -890,7 +869,3 @@ const RestoranPizza = () => {
 
 // Exportuj komponentu da bi mogla da se koristi u drugim fajlovima
 export default RestoranPizza;
-
-
-
-
