@@ -76,13 +76,7 @@ const Skills = () => {
   const { colorMode } = useColorMode();
   const [showPopup, setShowPopup] = useState(false);
 
-  const handlePizzaClick = () => {
-    setShowPopup(true);
-  };
-
-  const closePopup = () => {
-    setShowPopup(false);
-  };
+  
 
   return (
     <div className="min-h-screen px-10 pt-10">
@@ -102,10 +96,10 @@ const Skills = () => {
         />
         <SkillCard
           title={"Pizza Restaurant"}
-          path={"/pizzarestaurant"}
+          path="/pizzarestaurant"
           imageUrl={drugaSlika}
           videoUrl={drugiVideo}
-          onClick={handlePizzaClick}
+         
         />
         <SkillCard
           title={"Barber site (supabase)"}
@@ -116,68 +110,10 @@ const Skills = () => {
       </div>
 
       {/* Popup Modal */}
-      {showPopup && (
-        <div
-          className="fixed inset-0 bg-black/60 flex items-center justify-center z-50"
-          onClick={closePopup}
-        >
-          <div
-            className={`${
-              colorMode === "dark" ? "bg-gray-800" : "bg-white"
-            } rounded-2xl p-8 max-w-md mx-4 shadow-2xl`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2
-              className={`text-2xl font-bold mb-4 ${
-                colorMode === "dark" ? "text-white" : "text-black"
-              }`}
-            >
-              Pizza Restaurant - CRUD Site
-            </h2>
-            <p
-              className={`mb-6 ${
-                colorMode === "dark" ? "text-gray-300" : "text-gray-700"
-              }`}
-            >
-              This is a CRUD site where you can add or delete drinks and pizzas
-              in the pizzeria.
-            </p>
-            <p
-              className={`mb-6 font-semibold ${
-                colorMode === "dark" ? "text-yellow-400" : "text-yellow-600"
-              }`}
-            >
-              Press <span className="font-black">Ctrl + Shift + Z</span> to
-              access the admin panel!
-            </p>
-            <div className="flex gap-4 mt-3.5">
-              <Link
-                to="/pizzarestaurant"
-                className={`flex-1 font-bold py-3 px-6 rounded-lg transition-colors text-center ${
-                  colorMode === "dark"
-                    ? "bg-gray-700 hover:!bg-gray-400 text-white"
-                    : "bg-gray-300 hover:!bg-gray-200 text-black"
-                }`}
-                onClick={closePopup}
-              >
-                Open Project
-              </Link>
-              <button
-                onClick={closePopup}
-                className={`flex-1 font-bold py-3 px-6 rounded-lg transition-colors ${
-                  colorMode === "dark"
-                    ? "bg-gray-700 hover:!bg-gray-400 text-white"
-                    : "bg-gray-300 hover:!bg-gray-200 text-black"
-                }`}
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 };
 
 export default Skills;
+
