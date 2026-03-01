@@ -596,7 +596,7 @@ const RestoranPizza = () => {
                         {item.desc}
                       </p>
                     </div>
-                    <button className="mt-4 px-6 py-2 bg-red-600 hover:bg-red-500 !text-3xl !text-white !font-bold !uppercase !tracking-wider rounded-full transition-all group-hover:shadow-lg group-hover:shadow-red-600 transform !active:scale-95 shrink-0">
+                    <button className="!mt-4 !px-6 !py-2 !bg-red-600 !hover:bg-red-500 !text-3xl !text-white !font-bold !uppercase !tracking-wider !rounded-full transition-all !group-hover:shadow-lg !group-hover:shadow-red-600 transform !active:scale-95 !shrink-0">
                       Order Now
                     </button>
                   </div>
@@ -704,3 +704,4 @@ const RestoranPizza = () => {
 };
 
 export default RestoranPizza;
+
