@@ -261,7 +261,7 @@ const RestoranPizza = () => {
               scrollTrigger: {
                 trigger: sectionId,
                 start: "top 85%",
-                toggleActions: "play reverse play reverse",
+                toggleActions: "play none play reverse",
               },
             },
           );
@@ -359,7 +359,7 @@ const RestoranPizza = () => {
       
     setTimeout(() => {
       gsap.to(window, {
-        duration: 1.2,
+        duration: 0.8,
         scrollTo: { y: "#section1", offsetY: 80 },
         ease: "power3.inOut",
       });
