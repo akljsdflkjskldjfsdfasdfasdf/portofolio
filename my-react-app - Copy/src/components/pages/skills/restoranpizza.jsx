@@ -355,7 +355,16 @@ const RestoranPizza = () => {
   };
 
   const handleCategoryClick = (category) => setActiveCategory(category);
-  const handleBackToMenu = () => setActiveCategory(null);
+  const handleBackToMenu = () => {
+    setActiveCategory(null);
+    setTimeout(() => {
+      gsap.to(window, {
+        duration: 1.2,
+        scrollTo: { y: "#section1", offsetY: 80 },
+        ease: "power3.inOut",
+      });
+    }, 50);
+  };
 
   return (
     <div ref={containerRef}>
