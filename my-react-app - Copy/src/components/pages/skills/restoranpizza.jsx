@@ -456,7 +456,7 @@ const RestoranPizza = () => {
         <section
           id="section1"
           ref={menuContainerRef}
-          className="!min-h-[80vh] mt-20 sm:mt-10 md:mt-5 lg:mt-0 opacity-0 p-4 flex flex-col gap-4 max-w-7xl mx-auto !overflow-hidden!"
+          className="!min-h-[80vh] mt-30 sm:mt-10 md:mt-5 lg:mt-0 opacity-0 p-4 flex flex-col gap-4 max-w-7xl mx-auto !overflow-hidden!"
         >
           {!activeCategory && (
             <>
@@ -686,3 +686,4 @@ const RestoranPizza = () => {
 };
 
 export default RestoranPizza;
+
