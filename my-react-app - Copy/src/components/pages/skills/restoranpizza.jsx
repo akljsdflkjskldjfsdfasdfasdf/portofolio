@@ -7,6 +7,7 @@ import pizzaImg from "../../images/pizza.png";
 import celaPizzaImg from "../../images/celaPizza.png";
 import ikonaGojko from "../../images/gojkoIkona.png";
 import backgroundSlika from "../../images/background.jpeg";
+
 // Uvozimo GSAP biblioteku za profesionalne animacije
 import { gsap } from "gsap";
 // Plugin za smooth scroll do određenih elemenata
@@ -282,7 +283,7 @@ const RestoranPizza = () => {
             opacity: 1, // DO vidljivo
             scale: 1, // DO normalna veličina
             duration: 0.5, // Traje 0.5s
-            stagger: 0, // Svaka kartica kreće 0.1s kasnije
+            stagger: 0.1, // Svaka kartica kreće 0.1s kasnije
             ease: "back.out(1.2)", // Bounce efekat
             willChange: "transform",
           },
@@ -336,18 +337,19 @@ const RestoranPizza = () => {
           gsap.fromTo(
             sectionId,
             {
-              x: 1800, // Kreće sa 100px desno
+              x: 1800, // Kreće sa 1800px desno (izmenjeno u Next.js verziji)
               opacity: 1, // Kreće od nule
             },
             {
               x: 0,
               opacity: 1,
-              duration: 1.2,
+              duration: 1.2, // Izmenjeno u Next.js verziji
               ease: "power2",
               scrollTrigger: {
                 trigger: sectionId,
-                start: "top 85%", // Animacija kreće kad vrh sekcije uđe na 90% visine ekrana
-                toggleActions: "play reverse play reverse", // Play kad ulazi, reverse kad se vraćaš gore
+                start: "top 85%", // Animacija kreće kad vrh sekcije uđe na 85% visine ekrana (izmenjeno)
+                toggleActions: "play reverse play reverse", // Izmenjeno u Next.js verziji
+                // willChange: "transform, opacity" // Opciono za bolje performanse
               },
             },
           );
@@ -463,7 +465,7 @@ const RestoranPizza = () => {
 
   // Stil za background sliku (fixed parallax efekat)
   const bgStyle = {
-    backgroundImage: `url(${backgroundSlika})`, // ← React import (ne Next.js /public string)
+    backgroundImage: `url(${backgroundSlika})`, // Background slika (vraćeno na import)
     backgroundPosition: "center", // Centriraj sliku
     minHeight: "100vh", // Minimalna visina = visina ekrana
     backgroundAttachment: "fixed", // Fiksirana pozadina (parallax)
@@ -518,7 +520,7 @@ const RestoranPizza = () => {
               handleScroll("#section");
             }}
           >
-            <img className="size-20" src={ikonaGojko} alt="Gojko Ikona" /> {/* ← React import */}
+            <img className="size-20 " src={ikonaGojko} alt="Gojko Ikona" />
           </a>
         </div>
         {/* Navigacija desno */}
@@ -558,7 +560,7 @@ const RestoranPizza = () => {
             {/* Lebdeća pizza slika */}
             <img
               className="pizza-img mx-auto w-1/4 w-2xs inset-0 object-cover object-center"
-              src={pizzaImg} // ← React import
+              src={pizzaImg}
               alt="Pizza na drva"
             />
             {/* Hero naslov sa animacijom karaktera */}
@@ -766,13 +768,14 @@ const RestoranPizza = () => {
           )}
         </section>
 
+        {/* SECTION 4: ABOUT (O NAMA) - Izmenjeno u Next.js verziji */}
         <section
           id="section2"
-          className="  opacity-0 mt-20 sm:mt-0 md:mt-25 w-[80vw] h-[130vh] md:h-[120vh] lg:h-[100vh] mx-auto  overflow-hidden"
+          className="opacity-0 mt-20 sm:mt-0 md:mt-25 w-[80vw] h-[130vh] md:h-[120vh] lg:h-[100vh] mx-auto overflow-hidden"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center h-full flex-1 text-center ">
+          <div className="flex flex-col md:flex-row justify-between items-center h-full flex-1 text-center">
             {/* Leva strana: priča o pizzeriji */}
-            <div className=" rounded-3xl bg-black/30 backdrop-blur-sm flex-1  h-[75%] md:h-[65%]  w-full flex flex-col justify-center p-10 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-amber-50/20">
+            <div className="rounded-3xl bg-black/30 backdrop-blur-sm flex-1 h-[75%] md:h-[65%] w-full flex flex-col justify-center p-10 md:p-16 border-b-4 md:border-b-0 md:border-r-4 border-amber-50/20">
               {/* Naslov */}
               <h2 className="bricolage-font text-yellow-300 text-4xl md:text-6xl uppercase italic font-black mb-6 leading-tight">
                 Naša Priča <br />
@@ -790,7 +793,7 @@ const RestoranPizza = () => {
                 sazri 48 sati za savršenu hrskavost.
               </p>
               {/* 3 bullet pointa sa emoji ikonama */}
-              <div className="flex flex-col lg:flex-row gap-4 ">
+              <div className="flex flex-col lg:flex-row gap-4">
                 {/* Peć na drva */}
                 <div className="flex items-center gap-3">
                   <span className="text-red-500 text-2xl">🔥</span>
@@ -817,9 +820,9 @@ const RestoranPizza = () => {
             {/* Desna strana: velika pizza slika koja rotira */}
             <div className="flex-1 flex justify-center items-center h-full">
               <img
-                src={celaPizzaImg} // ← React import
+                src={celaPizzaImg}
                 alt="big pizza"
-                className="mx-auto celapizza  object-contain"
+                className="mx-auto celapizza object-contain"
               />
             </div>
           </div>
@@ -828,7 +831,7 @@ const RestoranPizza = () => {
         {/* SECTION 3: MAPA I KONTAKT */}
         <section
           id="section3"
-          className="   h-[100vh] relative  grid place-items-center"
+          className="h-[100vh] relative grid place-items-center"
         >
           <div className="w-[80vw] mx-auto bg-black/30 backdrop-blur-sm rounded-3xl overflow-hidden border border-white/10">
             <div className="flex flex-col md:flex-row">
