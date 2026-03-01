@@ -356,7 +356,7 @@ const RestoranPizza = () => {
 
   const handleCategoryClick = (category) =>{
      setActiveCategory(category);
-      setActiveCategory(null);
+      
     setTimeout(() => {
       gsap.to(window, {
         duration: 1.2,
