@@ -98,7 +98,7 @@ const Skills = () => {
         />
         <SkillCard
           title={"Pizza Restaurant"}
-          path="/pizzarestaurant"
+          path={"https://gojkopizza.netlify.app/"}
           imageUrl={drugaSlika}
           videoUrl={drugiVideo}
          
@@ -124,6 +124,7 @@ const Skills = () => {
 };
 
 export default Skills;
+
 
 
 
